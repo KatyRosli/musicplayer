@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import PlayList from './components/PlayList';
+import Artist from './components/Artist';
 
 const App: React.FC = () => {
   return (
@@ -23,7 +23,7 @@ const App: React.FC = () => {
 
       <div className='body__container'>
         <Routes>
-          <Route path='/' element={<PlayList/>} />
+          <Route path='/' element={<Artist/>} />
         </Routes>
       </div>
       <footer>
