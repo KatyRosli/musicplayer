@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Link } from 'react-router-dom';
+import PlayList from './components/PlayList';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
+    <div>
+      <nav className='navbar'>
+        <h1 className='navbar__header'> Music </h1>
+        <div className='navbar__container'>
+          <li className='navbar__item'>
+            <Link to={'/'} className='navbar__link'>
+              PlayList
+            </Link>
+          </li>
+          <li className='navbar__item'>
+            <Link to={'/genre'} className='navbar__link'>
+              Genre
+            </Link>
+          </li>
+        </div>
+      </nav>
+
+      <div className='body__container'>
+        <Routes>
+          <Route path='/' element={<PlayList/>} />
+        </Routes>
+      </div>
+      <footer>
         <a
-          className="App-link"
-          href="https://reactjs.org"
+          href='https://github.com/KatyRosli/'
           target="_blank"
           rel="noopener noreferrer"
+          className="github"
         >
-          Learn React
+          Open sourced on Github{" "}
         </a>
-      </header>
+        by
+        <a
+          href='https://www.katyrosli.com'
+          target="_blank"
+          rel="nopener noreferrer"
+          className="name"
+        >
+          {" "}
+          Katy Rosli
+        </a>
+      </footer>
     </div>
-  );
-}
+  )
+};
 
 export default App;
