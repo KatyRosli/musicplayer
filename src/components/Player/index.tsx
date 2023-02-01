@@ -136,7 +136,7 @@ export const Player = ({ id, setId, setIsFull, isFull, windowWidth }: Props) => 
                             onClick={() => setIsFull(windowWidth <= 820 && !isFull)} className='music' key={music.id}>
                                 {!isFull ? 
                                 <>
-                                    <img src={music.album_img} />
+                                    <img src={music.album_img} alt='music album' />
                                     <div>
                                         <h1>{music.name}</h1>
                                         <h3>{music.author}</h3>

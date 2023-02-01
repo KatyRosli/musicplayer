@@ -16,13 +16,13 @@ export const Sidebar = ({ setGenre, setIsSearch, setIsFull, isSearch, isSidebar,
         <C.Container isSidebar={isSidebar}>   
             <div className='inicialSearch'>
                 <div 
-                onClick={() => (setGenre(''), setIsSearch(false), setIsFull(false), setIsSidebar(false))} 
+                onClick={() => {setGenre(''); setIsSearch(false); setIsFull(false); setIsSidebar(false)}} 
                 className='iniSearDivs'>
                     <p><Home/></p> Initial Page
                 </div>
 
                 <div 
-                onClick={() => (setIsSearch(!isSearch), setIsSidebar(false))}className='iniSearDivs'>
+                onClick={() => {setIsSearch(!isSearch); setIsSidebar(false)}}className='iniSearDivs'>
                     <p><Search /></p> Search
                 </div>
             </div>
@@ -30,20 +30,20 @@ export const Sidebar = ({ setGenre, setIsSearch, setIsFull, isSearch, isSidebar,
             <div className='genres'>
                 <h2>Genres</h2>
                 <div 
-                onClick={() => (setGenre('Beats'), setIsSidebar(false), setIsSearch(false))}>
-                    Beats
+                onClick={() => {setGenre('Pop'); setIsSidebar(false); setIsSearch(false)}}>
+                    Pop
                 </div>
                 <div 
-                onClick={() => (setGenre('Ambient'), setIsSidebar(false), setIsSearch(false))}>
-                    Ambient
+                onClick={() => {setGenre('Dance'); setIsSidebar(false); setIsSearch(false)}}>
+                    Dance
                 </div>
                 <div 
-                onClick={() => (setGenre('Classic'), setIsSidebar(false), setIsSearch(false))}>
+                onClick={() => {setGenre('Classic'); setIsSidebar(false); setIsSearch(false)}}>
                     Classic
                 </div>
                 <div 
-                onClick={() => (setGenre('Eletronic'), setIsSidebar(false), setIsSearch(false))}>
-                    Eletronic
+                onClick={() => {setGenre('Electronic'); setIsSidebar(false); setIsSearch(false)}}>
+                    Electronic
                 </div>
             </div>
         </C.Container>
