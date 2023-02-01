@@ -1,53 +1,96 @@
-import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import Artist from './components/Artist';
+import React, { useEffect, useState } from 'react';
+import { musics } from './data/data';
+import { Player } from './components/Player';
+import { Musics } from './components/Musics';
+import { Sidebar } from './components/Sidebar';
+import { Menu } from './svg/svg';
+import './App.css';
+import * as C from './styles'
 
-const App: React.FC = () => {
+function App() {
+  const [id, setId] = useState<string>('')
+  const [isFull, setIsFull] = useState<boolean>(false)
+  const [isSearch, setIsSearch] = useState<boolean>(false)
+  const [genre, setGenre] = useState<string>('')
+  const [search, setSearch] = useState<string>('')
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth)
+  const [isSidebar, setIsSidebar] = useState<boolean>(false)
+    
+    useEffect(() => {
+      window.addEventListener("resize", () => {
+           setWindowWidth(window.innerWidth)
+      })
+    }, [])
   return (
     <div>
-      <nav className='navbar'>
-        <h1 className='navbar__header'> Music </h1>
-        <div className='navbar__container'>
-          <li className='navbar__item'>
-            <Link to={'/'} className='navbar__link'>
-              PlayList
-            </Link>
-          </li>
-          <li className='navbar__item'>
-            <Link to={'/genre'} className='navbar__link'>
-              Genre
-            </Link>
-          </li>
-        </div>
-      </nav>
+      <C.Container>
+          <Sidebar 
+            setGenre={setGenre}
+            setIsSearch={setIsSearch}
+            setIsFull={setIsFull}
+            isSearch={isSearch}
+            isSidebar={isSidebar}
+            setIsSidebar={setIsSidebar}
+          />
 
-      <div className='body__container'>
-        <Routes>
-          <Route path='/' element={<Artist/>} />
-        </Routes>
-      </div>
-      <footer>
-        <a
-          href='https://github.com/KatyRosli/'
-          target="_blank"
-          rel="noopener noreferrer"
-          className="github"
-        >
-          Open sourced on Github{" "}
-        </a>
-        by
-        <a
-          href='https://www.katyrosli.com'
-          target="_blank"
-          rel="nopener noreferrer"
-          className="name"
-        >
-          {" "}
-          Katy Rosli
-        </a>
-      </footer>
+        <div className='top'>
+          {isSearch ? 
+            <>
+            {windowWidth <= 820 ? 
+            <button className='showSidebar' onClick={() => setIsSidebar(!isSidebar)}><Menu />
+            </button> 
+            : ''}
+
+            <input 
+            onChange={(e) => setSearch(e.target.value)} 
+            autoFocus placeholder='Search' type="text" />
+            <h1 className='searchH1'>Search for music name, author or genre </h1> 
+            </> :
+            <>
+              {windowWidth <= 820 ? 
+              <button className='showSidebar' onClick={() => setIsSidebar(!isSidebar)}><Menu />
+              </button>
+              : ''}
+              <h1 className='title'>{isFull && windowWidth <= 820 ? '' : 'All songs'}</h1>
+            </>
+          }
+          <div className='divSongs'>
+            <C.Music>
+            {musics.map(music => (
+              <Musics
+                key={music.id}
+                img={music.album_img}
+                name={music.name}
+                author={music.author}
+                audio={music.audio}
+                genre={music.genre}
+                setId={setId}
+                musicId={music.id}
+                id={id}
+                setIsFull={setIsFull}
+                isFull={isFull}
+                genres={genre}
+                isSearch={isSearch}
+                search={search}
+                windowWidth={windowWidth}
+              />
+              ))
+            }
+            </C.Music>
+          </div>
+        </div>
+      </C.Container>
+          <Player 
+            id={id}
+            setId={setId}
+            setIsFull={setIsFull}
+            isFull={isFull}
+            windowWidth={windowWidth}
+          /> 
+
     </div>
-  )
-};
+  );
+}
 
 export default App;
+
