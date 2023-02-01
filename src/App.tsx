@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { musics } from './data/data';
-import { Player } from './components/Player';
-import { Musics } from './components/Musics';
-import { Sidebar } from './components/Sidebar';
+import { Player } from './components/Player/Player';
+import { Musics } from './components/Musics/Musics';
+import { Sidebar } from './components/Sidebar/Sidebar';
 import { Menu } from './svg/svg';
 import './App.css';
 import * as C from './styles'
