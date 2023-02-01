@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { musics } from '../../data/data';
 import { Play, Pause, SkipBack, SkipForward, RandomMusicsTrue, RandomMusicsFalse, VolumeOff, VolumeOn } from '../../svg/svg';
 import * as C from './styles';
@@ -22,6 +22,69 @@ export const Player = ({ id, setId, setIsFull, isFull, windowWidth }: Props) => 
     const audioTag = useRef(null)
     const progressBar = useRef(null)
     const animationRef = useRef(null)
+
+    const calculateDuration = (sec: number) => {
+        const minutes = Math.floor(sec / 60)
+        const newMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
+        const seconds = Math.floor(sec % 60)
+        const newSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
+
+        return `${newMinutes}:${newSeconds}`
+    }   
+
+    const skipRandom = useCallback(() => {
+        const idNum = parseInt(id)
+        const randomNum = Math.floor(Math.random() * 9)
+        if (randomNum === 0 || randomNum === idNum) {
+            const newNum = randomNum + 1 
+            setId(newNum.toString())
+        } else {
+            setId(randomNum.toString())
+        }
+    }, [id, setId])
+
+    const skipForward = useCallback(() => {
+        if (id === '') {
+            alert('Choose a song!')        
+        } else if (isRandom) {
+            skipRandom()        
+        } else if (id === '9') {
+            setId('1')
+        } else {
+            const idNum = parseInt(id);
+            const newId = idNum + 1;
+            setId(newId.toString())
+        }
+    }, [id, isRandom, setId, skipRandom])
+
+    const skipBack = () => {
+        if (id === '') {
+            alert('Choose a song!')        
+        } else {
+            const idNum = parseInt(id);
+            const newId = idNum - 1;
+            setId(newId.toString())
+        }
+    }
+
+    const whilePlaying = useCallback(() => {
+        if (windowWidth >= 830 || isFull) {
+            progressBar.current.value = audioTag?.current?.currentTime
+            animationRef.current = requestAnimationFrame(whilePlaying)
+            changeCurrentTime()
+        }
+    }, [isFull, windowWidth])
+
+    const changeRange = () => {
+        if (windowWidth >= 830 || isFull) {
+            audioTag.current.currentTime = progressBar.current.value
+            changeCurrentTime()
+        }
+    }
+    
+    const changeCurrentTime = () => {
+        setCurrentTime(progressBar.current.value)
+    }
 
     useEffect(() => {
         if (id !== '') {
@@ -58,70 +121,9 @@ export const Player = ({ id, setId, setIsFull, isFull, windowWidth }: Props) => 
                 cancelAnimationFrame(animationRef.current)
             }
         }
-    }, [[], isRandom])
+    }, [isRandom, duration, id, isFull, isMuted, isPlaying, windowWidth, volume, skipForward, skipRandom, whilePlaying])
    
-    const calculateDuration = (sec: number) => {
-        const minutes = Math.floor(sec / 60)
-        const newMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`
-        const seconds = Math.floor(sec % 60)
-        const newSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`
-
-        return `${newMinutes}:${newSeconds}`
-    }   
-
-    const skipForward = () => {
-        if (id === '') {
-            alert('Choose a song!')        
-        } else if (isRandom) {
-            skipRandom()        
-        } else if (id === '9') {
-            setId('1')
-        } else {
-            const idNum = parseInt(id);
-            const newId = idNum + 1;
-            setId(newId.toString())
-        }
-    }
-
-    const skipRandom = () => {
-        const idNum = parseInt(id)
-        const randomNum = Math.floor(Math.random() * 9)
-        if (randomNum === 0 || randomNum === idNum) {
-            const newNum = randomNum + 1 
-            setId(newNum.toString())
-        } else {
-            setId(randomNum.toString())
-        }
-    }
-
-    const skipBack = () => {
-        if (id === '') {
-            alert('Choose a song!')        
-        } else {
-            const idNum = parseInt(id);
-            const newId = idNum - 1;
-            setId(newId.toString())
-        }
-    }
-
-    const whilePlaying = () => {
-        if (windowWidth >= 830 || isFull) {
-            progressBar.current.value = audioTag?.current?.currentTime
-            animationRef.current = requestAnimationFrame(whilePlaying)
-            changeCurrentTime()
-        }
-    }
-
-    const changeRange = () => {
-        if (windowWidth >= 830 || isFull) {
-            audioTag.current.currentTime = progressBar.current.value
-            changeCurrentTime()
-        }
-    }
     
-    const changeCurrentTime = () => {
-        setCurrentTime(progressBar.current.value)
-    }
     
     return (
         <C.Container isFull={isFull}>
