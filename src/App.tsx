@@ -51,7 +51,7 @@ function App() {
               <button className='showSidebar' onClick={() => setIsSidebar(!isSidebar)}><Menu />
               </button>
               : ''}
-              <h1 className='title'>{isFull && windowWidth <= 820 ? '' : 'All Songs'}</h1>
+              <h1 className='title'>{isFull && windowWidth <= 820 ? '' : 'Music Land'}</h1>
             </>
           }
           <div className='divSongs'>
@@ -77,26 +77,6 @@ function App() {
               ))
             }
             </C.Music>
-            <footer>
-        <a
-          href='https://github.com/KatyRosli/musicplayer'
-          target="_blank"
-          rel="noopener noreferrer"
-          className="github"
-        >
-          Open sourced on Github{" "}
-        </a>
-        by
-        <a
-          href='https://www.katyrosli.com'
-          target="_blank"
-          rel="nopener noreferrer"
-          className="name"
-        >
-          {" "}
-          Katy Rosli
-        </a>
-      </footer>
           </div>
         </div>
       </C.Container>

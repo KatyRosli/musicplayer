@@ -23,7 +23,7 @@ export const Sidebar = ({ setGenre, setIsSearch, setIsFull, isSearch, isSidebar,
                 <div 
                 onClick={() => {setGenre(''); setIsSearch(false); setIsFull(false); setIsSidebar(false)}} 
                 className='iniSearDivs'>
-                   <Link to='/'><p>All Songs</p>
+                   <Link to='/'><p>Music Land</p>
                    </Link>
                 </div>
 
@@ -62,6 +62,26 @@ export const Sidebar = ({ setGenre, setIsSearch, setIsFull, isSearch, isSidebar,
                 </Link>
             </div>
             </Router> 
+            <footer>
+        <a
+          href='https://github.com/KatyRosli/musicplayer'
+          target="_blank"
+          rel="noopener noreferrer"
+          className="github"
+        >
+          Open sourced on Github{" "}
+        </a>
+        by
+        <a
+          href='https://www.katyrosli.com'
+          target="_blank"
+          rel="nopener noreferrer"
+          className="name"
+        >
+          {" "}
+          Katy Rosli
+        </a>
+      </footer>
         </C.Container>
     )
 } 

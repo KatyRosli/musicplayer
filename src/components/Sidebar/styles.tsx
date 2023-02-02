@@ -54,11 +54,18 @@ export const Container = styled.div<{ isSidebar: boolean }>`
             font-size: 18px;
         }
     }
+
+    footer {
+        text-align: left;
+        padding: 24px 16px 16px 16px;
+        font-size: 12px;
+      }
+
     @media only screen and (max-width: 820px) {
         position: absolute;
         z-index: 2;
         display: ${props => props.isSidebar ? 'block' : 'none'};
-        background-color: #111635;
+        background-color: #EEE0F2;
         width: 250px;
 
         .inicialSearch {
