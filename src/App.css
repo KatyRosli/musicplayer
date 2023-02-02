@@ -5,3 +5,8 @@ body {
   font-family: 'Electrolize', sans-serif;
   background-color: #EEE0F2;
 }
+
+footer {
+  text-align: center;
+  padding: 16px 0 80px 0;
+}

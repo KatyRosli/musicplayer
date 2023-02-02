@@ -63,6 +63,7 @@ export const Musics = ({ img, name, author, audio, musicId, isFull, id, genre, g
                             <audio src={audio} />
                         </div>                   
             }
+            
         </C.Container>
     )
 }
