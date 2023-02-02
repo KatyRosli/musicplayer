@@ -6,7 +6,7 @@ export const Container = styled.div`
 .divAll {
     margin-right: 20px;
     margin-bottom: 20px;
-    box-shadow: 0px 0px 7px #c3c1c1;
+    box-shadow: 0px 0px 8px #D3D1D2;
     padding: 5px 5px 25px;
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@ h3 {
     h3 {
         margin: 0;
         font-size: 25px;
-        color: #4c4e51
+        color: #4c4e51;
     }
 }
 

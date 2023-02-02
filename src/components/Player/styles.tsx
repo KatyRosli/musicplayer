@@ -11,7 +11,7 @@ export const Container = styled.div<{isFull: boolean}>`
 
     box-shadow: 0px -1px 7px #16171aa0;
     
-    .musicDiv {
+    .musicPlayer__container {
         width: 400px;
         margin-top: 5px;
         cursor: pointer;
@@ -36,7 +36,7 @@ export const Container = styled.div<{isFull: boolean}>`
             appearance: none;
             height: 14px;
             width: 14px;
-            background-color: #fff;
+            background-color: #6F759A;
             border-radius: 50%;
         }
         .volumeButton {
@@ -49,9 +49,9 @@ export const Container = styled.div<{isFull: boolean}>`
     .playPause{
         margin: 0 5px;
     }
-    .music {
+    .musicPlayer__albumInfo {
         display: flex;
-        color: #fff;
+        color: #D3D1D2;
         align-items: center;
         margin-left: 5px;
 
@@ -74,7 +74,7 @@ export const Container = styled.div<{isFull: boolean}>`
         }
     }
 
-    .player {
+    .controllers {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -95,7 +95,7 @@ export const Container = styled.div<{isFull: boolean}>`
         }
     }
 
-    .inputButtons {
+    .controllers__inputButtons {
         display: flex;
         flex-direction: column;      
         align-items: center;
@@ -119,15 +119,16 @@ export const Container = styled.div<{isFull: boolean}>`
         .Pduration {
             position: relative;
             left: 15px;
-            color: #fff;
+            color: #6F759A;
             font-size: 14px;
         }
         .PcurrentTime {
             position: relative;
             right: 10px;
-            color: #fff;
+            color: #6F759A;
             width: 35px;
             font-size: 14px;
+            padding-right: 16px;
         }
     }
     .currentProgress {
@@ -137,7 +138,7 @@ export const Container = styled.div<{isFull: boolean}>`
         border-radius: 10px;
         width: 380px;
         margin: auto;
-        background-color: #494A4D;
+        background-color: #C353E6;
         height: 5px;
         outline: none;
 
@@ -145,7 +146,7 @@ export const Container = styled.div<{isFull: boolean}>`
             appearance: none;
             height: 14px;
             width: 14px;
-            background-color: #fff;
+            background-color: #6F759A;
             border-radius: 50%;
             border: none;
             cursor: pointer;

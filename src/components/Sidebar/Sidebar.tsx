@@ -3,7 +3,6 @@ import {
     BrowserRouter as Router,
     Link
   } from "react-router-dom";
-import { Home, Search } from '../../svg/svg';
 import * as C from './styles';
 
 type Props = {
@@ -24,13 +23,13 @@ export const Sidebar = ({ setGenre, setIsSearch, setIsFull, isSearch, isSidebar,
                 <div 
                 onClick={() => {setGenre(''); setIsSearch(false); setIsFull(false); setIsSidebar(false)}} 
                 className='iniSearDivs'>
-                   <Link to='/'><p><Home/></p> All Songs
+                   <Link to='/'><p>All Songs</p>
                    </Link>
                 </div>
 
                 <div 
                 onClick={() => {setIsSearch(!isSearch); setIsSidebar(false)}}className='iniSearDivs'>
-                    <Link to='/search'><p><Search /></p> Search
+                    <Link to='/search'><p>Search</p>
                     </Link>
                 </div>
             </div>

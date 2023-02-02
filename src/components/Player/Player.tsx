@@ -128,14 +128,14 @@ export const Player = ({ id, setId, setIsFull, isFull, windowWidth }: Props) => 
     return (
         <C.Container isFull={isFull}>
             
-            <div className='musicDiv'>
+            <div className='musicPlayer__container'>
                 
                    {musics.map(music => (
                         
                         id === music.id ?
                         
                             <div 
-                            onClick={() => setIsFull(windowWidth <= 820 && !isFull)} className='music' key={music.id}>
+                            onClick={() => setIsFull(windowWidth <= 820 && !isFull)} className='musicPlayer__albumInfo' key={music.id}>
                                 {!isFull ? 
                                 <>
                                     <img src={music.album_img} alt='music album' />
@@ -152,8 +152,8 @@ export const Player = ({ id, setId, setIsFull, isFull, windowWidth }: Props) => 
                     ))
                 }
             </div>
-            <div className='player'>
-                <div className='inputButtons'>
+            <div className='controllers'>
+                <div className='controllers__inputButtons'>
                     { isFull || windowWidth >= 830 ? 
                         <div className='progressBar'>
                             <p className='PcurrentTime'>

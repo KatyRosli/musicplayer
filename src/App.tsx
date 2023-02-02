@@ -51,7 +51,7 @@ function App() {
               <button className='showSidebar' onClick={() => setIsSidebar(!isSidebar)}><Menu />
               </button>
               : ''}
-              <h1 className='title'>{isFull && windowWidth <= 820 ? '' : 'All songs'}</h1>
+              <h1 className='title'>{isFull && windowWidth <= 820 ? '' : 'All Songs'}</h1>
             </>
           }
           <div className='divSongs'>
