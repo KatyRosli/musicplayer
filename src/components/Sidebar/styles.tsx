@@ -10,6 +10,7 @@ export const Container = styled.div<{ isSidebar: boolean }>`
     
     a {
         text-decoration: none;
+        color: #7A049E;
     }
 
     a: hover {
